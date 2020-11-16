@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<html lang= "en" dir="ltr">
+	<title>Patient Registration</title>
+	<script type="text/javascript">
+
+		function pickValues() {
+			var outputElement = document.getElementById("displayinput");
+			var pname = document.getElementById('patientname').value;
+			var pphone = document.getElementById('phone').value;
+			var pemail = document.getElementById('email').value;
+			let paadhar = document.getElementById('aadhar').value;
+			let pblood = document.querySelector('#bloodgroup');
+			let adate = document.querySelector('#admitdate');
+			var toPrint = "Name:"+ pname +''+"Aadhar:"+ paadhar +''+"Patient's phone:"+pphone+''+"Email:"+pemail;
+			toPrint +="<br> Patient's blood group:"+ pblood.options[pblood.selectedIndex].value;
+			toPrint +="<br> Patient's admit date:"+ adate.options[adate.selectedIndex].value
+			outputElement.innerHTML = toPrint;
+		}
+
+		function formInit() {
+			const formElem = document.querySelector("#patientreg");
+			formElem.addEventListener('submit', function(event){
+				event.preventDefault();
+				pickValues();
+			});
+		}
+	</script>
+	<style type="text/css">
+		body{
+			font-size: medium;
+			background-color: yellow;
+			padding: 50px 60px;
+			font-family: helvetica;
+		}
+		input, select{
+			background-color: white;
+			width: 190px;
+		}
+		h2{
+			font-size: 50px;
+			background-color: white;
+			color: black;
+			text-align: center;
+			font-weight: bold;
+			padding: 10px 70px;
+		}
+		#patientreg{
+			font-family: Arial;
+			font-weight: bold;
+		}
+
+	</style>
+</head>
+
+<body onload="formInit()">
+	<h2> Patient Registration </h2>
+	<section style="background-color: pink; padding: 30px 50px; ">
+		<form id="patientreg">
+			<label for="patientname">Patient Name: </label>
+			<input type="text" name="patientname" id="patientname" value="Riza Mukherjee" required>
+			<br><br>
+			<label for="dob">D.O.B:     </label>
+			<input type="date" name="dob" id="dob">
+			<br><br>
+			<label for="bloodgroup">Blood Group:</label>
+			<input list="blood" name="bloodgroup" id="bloodgroup" required>
+			<datalist id="blood">
+				<option value="A+"></option>
+				<option value="A-"></option>
+				<option value="B+"></option>
+				<option value="B-"></option>
+				<option value="AB+"></option>
+				<option value="AB-"></option>
+			</datalist>
+			<label for="admitdate">Date of Admit</label>
+			<input type="date" name="admitdate" id="admitdate">
+			<br><br>
+			<label for="aadhar">Aadhar Card No. :</label>
+			<input type="text" id="aadhar" name="aadhar">
+			<br><br>
+			<label for="temp">Temperature during admit:</label>
+			<span>98.4 (normal temp)</span>
+			<input type="range" id="temp" name="temp" min="98.4" max="110" step="2">
+			<span>110 (high temp)</span>
+			<br><br>
+			<label for="phone">Phone: </label>
+			<input type="tel" id="phone" name="phone" required>
+			<br><br>
+			<label for="email">Email:</label>
+			<input type="email" name="email" id="email">
+			<br><br>
+			<input type="submit" value="REGISTER">
+		</form>
+	</section>
+	<br>
+	<hr>
+	<div>
+		<p id="displayinput"> Display Input here. </p>
+	</div>
+	<script type="text/javascript"></script>
+</body>
+</html>
